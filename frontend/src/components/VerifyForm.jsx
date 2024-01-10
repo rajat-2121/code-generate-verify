@@ -9,7 +9,7 @@ const VerifyForm = () => {
 
     const verifyCode = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/codes/use', {
+            const response = await fetch('https://code-generate-verify.onrender.com/api/codes/use', {
                 method: 'POST',
                 body: JSON.stringify({ code: enteredCode }),
                 headers: {

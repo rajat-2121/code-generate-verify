@@ -7,7 +7,7 @@ const GetForm = () => {
 
     const getCode = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/codes/', {
+            const response = await fetch('https://code-generate-verify.onrender.com/api/codes/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
