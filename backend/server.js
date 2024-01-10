@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 })
 
 // api endpoints
-
+app.use('api/codes',codeRoute);
 
 // server listener
 const port = process.env.PORT || 5000
