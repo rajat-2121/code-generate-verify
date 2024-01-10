@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const cors = require('cors');
+const codeRoute = require('./routes/codeRoute')
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use((req, res, next) => {
 })
 
 // api endpoints
-app.use('api/codes',codeRoute);
+app.use('/api/codes',codeRoute);
 
 // server listener
 const port = process.env.PORT || 5000
