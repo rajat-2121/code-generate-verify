@@ -3,7 +3,7 @@ const crypto = require('crypto');
 
 exports.generateCode = async (req, res) => {
     const newCode = new Code({
-        generatedCode: crypto.randomBytes(5).toString('hex'), // 5 alphanumeric code
+        generatedCode: crypto.randomBytes(3).toString('hex'), // 5 alphanumeric code
         expirationTime: new Date(Date.now() + 1 * 60 * 1000) // +1 min.
     })
 
