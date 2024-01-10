@@ -9,6 +9,10 @@ const CodeSchema = new mongoose.Schema({
     expirationTime: {
         type: Date,
         required: true
+    },
+    isUsed: {
+        type: Boolean,
+        default: false
     }
 })
 

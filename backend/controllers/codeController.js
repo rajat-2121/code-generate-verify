@@ -22,13 +22,18 @@ exports.useCode = async (req, res) => {
         const codeDocument = await Code.findOne({generatedCode: code})
         // console.log(codeDocument, code)
         if(codeDocument && Date.now() < codeDocument.expirationTime) {
-            res.json({status: 'success', message: 'Code is correct!'})
+            if(!codeDocument.isUsed) {
+                await Code.findOneAndUpdate({generatedCode: codeDocument.generatedCode}, {isUsed: true}, {new: true})
+                res.status(200).json({status: 'success', message: 'Code is correct!'})
+            } else {
+                res.status(200).json({status: 'unsuccess', message: 'This code has already been used.'})
+            }
         }
         else if(codeDocument) {
-            res.json({status: 'unsuccess', message: 'The code has expired!'})
+            res.status(200).json({status: 'unsuccess', message: 'The code has expired!'})
         }
         else {
-            res.json({status: 'unsuccess', message: 'Incorrect code'})
+            res.status(200).json({status: 'unsuccess', message: 'Incorrect code'})
         }
     } catch (error) {
         res.status(500).json(error)
